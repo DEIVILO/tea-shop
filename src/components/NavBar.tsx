@@ -10,13 +10,13 @@ import { cookies } from "next/headers"
 const NavBar = async () => {
     
     //const nextCookies = cookies()
-   // const { user } = await getServerSideUser(nextCookies)
+    const { user } = { id:1 , username: "peteris", email: "efa@sa.ld"} //await getServerSideUser(nextCookies)
 
     return (
         <div className="sticky z-50 top-0 inset-x-0 h-16 bg-[#3b5b61]">
-            <header className="relative bg-[#3b5b61]">
+            <header className="relative bg-[#3b5b61] border-b border-green-100">
                 <MaxWidthWrapper >
-                    <div className="border-b border-gray-200">
+                    <div className="">
                         <div className="flex h-16 items-center">
 
                             {/* TODO:MOBILE nav */}
@@ -31,8 +31,30 @@ const NavBar = async () => {
                                 <NavItems />
                             </div>
                             
-                        </div> 
-                    </div>
+
+                            <div className="ml-auto flex items-center">
+                                <div className="hidden lg:flex lg-flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                                    {user ? null : ( 
+                                        <Link href='/sign-in' className={buttonVariants({
+                                            variant: 'ghost',
+                                        })}>Sign in</Link>
+                                    )}
+                                    {user ? null: (<span className="h-6 w-px bg-gray-200" area-hidden="true" />)}
+
+                                    {user ? (<span className="h-6 w-px bg-gray-200" area-hidden="true" />) : null}
+
+                                    {user ? null : (<div className="flex lg:ml-6 ">
+                                    <span className="h-6 w-px bg-gray-200" area-hidden="true" />
+                                        </div>
+                                    )}
+
+                                            <div className="ml-4 flow-root lg:ml-6">
+                                                <Cart />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
                 </MaxWidthWrapper>
             </header>
         </div>
