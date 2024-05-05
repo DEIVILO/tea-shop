@@ -35,11 +35,17 @@ const NavBar = async () => {
                             <div className="ml-auto flex items-center">
                                 <div className="hidden lg:flex lg-flex-1 lg:items-center lg:justify-end lg:space-x-6">
                                     {user ? null : ( 
-                                        <Link href='/sign-in' className={buttonVariants({
-                                            variant: 'ghost',
-                                        })}>Sign in</Link>
-                                    )}
-                                    {user ? null: (<span className="h-6 w-px bg-gray-200" area-hidden="true" />)}
+                                    <Link href='/sign-in' className={buttonVariants({
+                                        variant: 'ghost',
+                                    })}>Sign in</Link>
+                                )}
+
+                                {user ? null: (<span className="h-6 w-px bg-gray-200" area-hidden="true" />)}
+
+                                {user ? ( true ) : ( <Link href="/sign-up" className={buttonVariants({variant: "ghost",})}>       {/*TODO: CURRENTLY THERE IS A BOOLEAN VALUE, BUT THIS NEEDS TO BE TAKEN FROM USERACCOUNTNAV TO SEE IF THE USER IS OR ISNT LOGGED IN*/}
+                                        Create account
+                                    </Link>
+                                )}
 
                                     {user ? (<span className="h-6 w-px bg-gray-200" area-hidden="true" />) : null}
 
@@ -48,13 +54,13 @@ const NavBar = async () => {
                                         </div>
                                     )}
 
-                                            <div className="ml-4 flow-root lg:ml-6">
-                                                <Cart />
-                                            </div>
-                                        </div>
+                                    <div className="ml-4 flow-root lg:ml-6">
+                                        <Cart />
                                     </div>
-                                </div> 
-                            </div>
+                                </div>
+                           </div>
+                        </div> 
+                    </div>
                 </MaxWidthWrapper>
             </header>
         </div>
